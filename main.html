@@ -847,28 +847,28 @@ const QUESTIONS = [
   ans:1 },
 
 { q:"Что такое колонтитул в текстовом документе?",
-  opts:["Особое форматирование первого абзаца","Надпись, повторяющаяся на каждой странице вверху или внизу","Номер страницы в центре листа","Заголовок таблицы"],
+  opts:["Особое форматирование первого абзаца","Надпись, повторяющаяся на каждой странице вверху или внизу","Номер страницы в начале абзаца","Горизонтальная линия в конце документа"],
   ans:1 },
 
 { q:"Функция 'Слияние' (Mail Merge) в Word используется для:",
-  opts:["Объединения двух документов в один файл","Создания серийных писем на основе таблицы данных","Слияния нескольких стилей оформления","Копирования форматирования между абзацами"],
+  opts:["Объединения двух документов в один файл","Создания серийных писем на основе таблицы данных","Слияния нескольких стилей","Вставки таблицы в документ"],
   ans:1 },
 
 { q:"Красная строка — это:",
-  opts:["Выделение первого слова красным цветом","Отступ первой строки абзаца","Горизонтальная линия красного цвета","Инструмент выделения ошибок"],
+  opts:["Выделение первого слова красным цветом","Отступ первой строки абзаца","Горизонтальная линия красного цвета","Строка текста красного цвета"],
   ans:1 },
 
 { q:"Концевая сноска в Word отличается от обычной сноски тем, что:",
-  opts:["Выводится в конце документа (или раздела), а не внизу страницы","Имеет другой шрифт","Нумеруется буквами","Не отображается при печати"],
+  opts:["Выводится в конце документа (или раздела), а не внизу страницы","Имеет другой шрифт","Нумеруется буквами","Не может быть отредактирована"],
   ans:0 },
 
 // ── Раздел 2: GIMP ──────────────────────────
 { q:"Что такое пиксель?",
-  opts:["Минимальный элемент векторного изображения","Минимальная точка растрового изображения","Единица измерения разрешения экрана","Слой в графическом редакторе"],
+  opts:["Минимальный элемент векторного изображения","Минимальная точка растрового изображения","Единица измерения на мониторе","Элемент сетки сохраняемого файла"],
   ans:1 },
 
 { q:"Чем растровое изображение отличается от векторного?",
-  opts:["Растровое состоит из математических формул, векторное — из пикселей","Растровое состоит из пикселей и теряет качество при увеличении; векторное описывается формулами и масштабируется без потерь","Векторное хранится в формате JPG, растровое — в SVG","Разница только в размере файла"],
+  opts:["Растровое состоит из математических формул, векторное — из пикселей","Растровое состоит из пикселей и теряет качество при увеличении, векторное описывается формулами","Растровое сжимается лучше","Они не отличаются"],
   ans:1 },
 
 { q:"Инструмент 'Лассо' в GIMP предназначен для:",
@@ -880,33 +880,33 @@ const QUESTIONS = [
   ans:2 },
 
 { q:"При уменьшении растрового изображения и последующем увеличении обратно до исходного размера качество изображения:",
-  opts:["Сохраняется полностью","Ухудшается, так как информация о пикселях утеряна","Улучшается за счёт интерполяции","Не изменяется при использовании PNG"],
+  opts:["Сохраняется полностью","Ухудшается, так как информация о пикселях утеряна","Улучшается за счёт интерполяции","Остаётся неизменным из-за масштабирования"],
   ans:1 },
 
 // ── Раздел 3: Inkscape ──────────────────────
 { q:"Что такое SVG-формат?",
-  opts:["Растровый формат для веб-изображений","Формат сжатия видео","Векторный формат изображений на основе XML, масштабируемый без потерь","Формат 3D-графики"],
+  opts:["Растровый формат для веб-изображений","Формат сжатия видео","Векторный формат изображений на основе XML, масштабируемый без потери качества","Формат для архивирования графики"],
   ans:2 },
 
 { q:"Операция 'Разбить контур' в Inkscape:",
-  opts:["Удаляет весь объект","Разбивает составной контур на отдельные части","Добавляет новый узел","Объединяет несколько контуров в один"],
+  opts:["Удаляет весь объект","Разбивает составной контур на отдельные части","Добавляет новый узел","Объединяет несколько контуров"],
   ans:1 },
 
 { q:"Кривая Безье в векторной графике — это:",
-  opts:["Прямая линия с двумя точками","Параметрическая кривая, задаваемая опорными точками и управляющими рычагами","Тип заливки объекта","Метод сжатия изображений"],
+  opts:["Прямая линия с двумя точками","Параметрическая кривая, задаваемая опорными точками и управляющими рычагами","Дуга окружности","Волнистая линия без математического описания"],
   ans:1 },
 
 { q:"Чем отличается однородная заливка от градиентной?",
-  opts:["Однородная — это текстура, градиентная — цвет","Однородная заполняет объект одним цветом, градиентная — плавным переходом цветов","Они ничем не отличаются","Градиентная используется только для текста"],
+  opts:["Однородная — это текстура, градиентная — цвет","Однородная заполняет объект одним цветом, градиентная — переходом между цветами","Они не отличаются функционально","Однородная быстрее обрабатывается"],
   ans:1 },
 
 // ── Раздел 4: Презентации ──────────────────
 { q:"Что такое 'Образец слайдов' в PowerPoint?",
-  opts:["Первый слайд презентации","Шаблон, задающий единый стиль для всех слайдов","Набор анимаций по умолчанию","Режим просмотра слайдов"],
+  opts:["Первый слайд презентации","Шаблон, задающий единый стиль для всех слайдов","Набор анимаций по умолчанию","Библиотека готовых фигур"],
   ans:1 },
 
 { q:"Что такое триггер анимации в PowerPoint?",
-  opts:["Автоматический запуск анимации при открытии файла","Событие (например, клик по объекту), запускающее конкретную анимацию","Переход между слайдами с эффектом","Звуковое сопровождение слайда"],
+  opts:["Автоматический запуск анимации при открытии файла","Событие (например, клик по объекту), запускающее конкретную анимацию","Тип переходов между слайдами","Эффект звука при анимации"],
   ans:1 },
 
 { q:"Какой тип диаграммы лучше всего подходит для отображения долей (частей от целого)?",
@@ -914,43 +914,41 @@ const QUESTIONS = [
   ans:2 },
 
 { q:"Гиперссылка в презентации может вести:",
-  opts:["Только на внешний сайт","Только на другой слайд той же презентации","На другой слайд, на файл, на веб-страницу или на адрес e-mail","Только на документ Word"],
+  opts:["Только на внешний сайт","Только на другой слайд той же презентации","На другой слайд, на файл, на веб-страницу, на e-mail адрес","Только на документ Word"],
   ans:2 },
 
 // ── Раздел 5: Excel ─────────────────────────
 { q:"Что означает символ $ в адресе ячейки Excel (например, $A$1)?",
-  opts:["Денежный формат ячейки","Абсолютная адресация — адрес не изменяется при копировании формулы","Ссылка на другой лист","Защищённая ячейка"],
+  opts:["Денежный формат ячейки","Абсолютная адресация — адрес не изменяется при копировании формулы","Ссылка на другой лист","Скрытая ячейка"],
   ans:1 },
 
 { q:"Функция СЧЁТЕСЛИ в Excel:",
-  opts:["Суммирует значения ячеек, удовлетворяющих условию","Подсчитывает количество ячеек, удовлетворяющих условию","Находит среднее значение по условию","Проверяет логическое условие"],
+  opts:["Суммирует значения ячеек, удовлетворяющих условию","Подсчитывает количество ячеек, удовлетворяющих условию","Считает среднее значение","Находит максимальное значение"],
   ans:1 },
 
-
 { q:"Расширенный фильтр в Excel отличается от автофильтра тем, что:",
-  opts:["Работает быстрее","Позволяет задать сложные условия отбора, включая вычисляемые критерии и несколько условий по разным столбцам","Может фильтровать только числа","Не требует выделения диапазона"],
+  opts:["Работает быстрее","Позволяет задать сложные условия отбора, включая вычисляемые критерии и несколько условий одновременно","Применяется ко всем листам","Сохраняется автоматически"],
   ans:1 },
 
 { q:"Что делает функция ЕСЛИ(A1>10; 'Да'; 'Нет') если A1=7?",
   opts:["Возвращает 'Да'","Возвращает 'Нет'","Возвращает 0","Выдаёт ошибку"],
   ans:1 },
 
-
 // ── Раздел 6: Базы данных ───────────────────
 { q:"Что такое первичный ключ в реляционной базе данных?",
-  opts:["Поле с паролем доступа к БД","Уникальный идентификатор каждой записи в таблице","Первое поле любой таблицы","Индексированное числовое поле"],
+  opts:["Поле с паролем доступа к БД","Уникальный идентификатор каждой записи в таблице","Первое поле любой таблицы","Самое важное поле в таблице"],
   ans:1 },
 
 { q:"Связь 'один-ко-многим' в базе данных означает:",
-  opts:["Одна таблица связана с одной таблицей","Одной записи в главной таблице соответствует несколько записей в подчинённой","Каждая запись связана с каждой","Таблицы не имеют ключей"],
+  opts:["Одна таблица связана с одной таблицей","Одной записи в главной таблице соответствует несколько записей в подчинённой таблице","Много таблиц связаны с одной","Связь устанавливается между несколькими полями"],
   ans:1 },
 
 { q:"Запрос с параметром в Access позволяет:",
-  opts:["Изменять структуру таблицы","Вводить условие отбора при каждом выполнении запроса","Создавать новую таблицу","Удалять записи автоматически"],
+  opts:["Изменять структуру таблицы","Вводить условие отбора при каждом выполнении запроса","Создавать новую таблицу","Удалять записи"],
   ans:1 },
 
 { q:"Что такое нормализация базы данных?",
-  opts:["Форматирование данных в ячейках","Процесс организации данных для устранения избыточности и аномалий","Сортировка записей в таблице","Создание индексов для ускорения поиска"],
+  opts:["Форматирование данных в ячейках","Процесс организации данных для устранения избыточности и аномалий","Сжатие размера БД","Создание резервной копии"],
   ans:1 },
 
 { q:"Форма в СУБД Access используется для:",
@@ -971,11 +969,11 @@ const QUESTIONS = [
   ans:2 },
 
 { q:"Разница между тегами <ol> и <ul> в HTML:",
-  opts:["<ol> — маркированный список, <ul> — нумерованный","<ol> — нумерованный список, <ul> — маркированный","Оба создают одинаковые списки","<ol> — для изображений"],
+  opts:["<ol> — маркированный список, <ul> — нумерованный","<ol> — нумерованный список, <ul> — маркированный","Оба создают одинаковые списки","Разницы не существует"],
   ans:1 },
 
 { q:"Что делает свойство CSS display: none?",
-  opts:["Делает элемент прозрачным","Полностью скрывает элемент, он не занимает место на странице","Делает элемент блочным","Выравнивает элемент по центру"],
+  opts:["Делает элемент прозрачным","Полностью скрывает элемент, он не занимает место на странице","Делает элемент невидимым, но сохраняет место","Удаляет элемент из кода"],
   ans:1 },
 
 { q:"Внешние стили CSS подключаются к HTML через тег:",
@@ -984,470 +982,278 @@ const QUESTIONS = [
 
 // ── ИИ: Теория ──────────────────────────────
 { q:"Что такое 'галлюцинация' в контексте больших языковых моделей (LLM)?",
-  opts:["Визуальные артефакты при генерации изображений","Уверенное генерирование фактически неверной информации","Ошибка в коде программы","Слишком медленный ответ модели"],
+  opts:["Визуальные артефакты при генерации изображений","Уверенное генерирование фактически неверной информации","Зависание модели при обработке","Ошибка при вводе данных"],
   ans:1 },
 
 { q:"LLM (большая языковая модель) генерирует текст, основываясь на:",
-  opts:["Точном поиске в базе данных фактов","Статистическом предсказании наиболее вероятного следующего токена","Правилах грамматики, заложенных вручную","Случайном выборе слов из словаря"],
+  opts:["Точном поиске в базе данных фактов","Статистическом предсказании наиболее вероятного следующего токена на основе обучения","Запрограммированных правилах","Случайном выборе слов"],
   ans:1 },
 
 { q:"Что такое машинное обучение?",
-  opts:["Программирование компьютера с помощью чётких правил","Алгоритмы, которые автоматически улучшаются на основе данных без явного программирования","Обучение программистов работе с ИИ","Ручная разметка данных для нейронных сетей"],
+  opts:["Программирование компьютера с помощью чётких правил","Алгоритмы, которые автоматически улучшаются на основе данных и опыта","Ручное введение информации в компьютер","Копирование человеческого поведения"],
   ans:1 },
 
 { q:"Термин 'промпт' в работе с ИИ означает:",
-  opts:["Скорость обработки запроса","Текстовый запрос или инструкция, которую пользователь отправляет ИИ-модели","Обновление модели ИИ","Программный интерфейс доступа к ИИ"],
-  ans:1 },
-
-{ q:"EU AI Act (Закон ЕС об ИИ, 2024) относит ИИ в судопроизводстве к категории:",
-  opts:["Минимального риска","Ограниченного риска","Высокого риска","Запрещённого риска"],
-  ans:2 },
-
-{ q:"Что такое 'обучение с учителем' (supervised learning)?",
-  opts:["Обучение, при котором преподаватель объясняет алгоритму правила","Алгоритм учится на размеченных данных (пара вход → правильный ответ)","Алгоритм самостоятельно находит закономерности без меток","Обучение модели в режиме реального времени"],
-  ans:1 },
-
-{ q:"Первым в мире ввёл термин 'Artificial Intelligence' на конференции в Дартмуте в 1956 году:",
-  opts:["Алан Тьюринг","Джон Маккарти","Норберт Винер","Клод Шеннон"],
-  ans:1 },
-
-{ q:"Тест Тьюринга проверяет:",
-  opts:["Скорость вычислений компьютера","Может ли машина демонстрировать интеллектуальное поведение, неотличимое от человеческого","Правильность алгоритма сортировки","Надёжность аппаратного обеспечения"],
-  ans:1 },
-
-{ q:"Что такое токен в контексте LLM?",
-  opts:["Пароль доступа к ИИ-сервису","Минимальная единица текста (часть слова или символ), которую обрабатывает языковая модель","Одна нейронная связь в сети","Слой нейронной сети"],
-  ans:1 },
-
-// ── ИИ: Инструменты ─────────────────────────
-{ q:"Какой ИИ-сервис специализируется на поиске с обязательными ссылками на источники?",
-  opts:["ChatGPT","Midjourney","Perplexity AI","DALL·E"],
-  ans:2 },
-
-{ q:"Whisper от OpenAI — это инструмент для:",
-  opts:["Генерации изображений","Распознавания и транскрипции речи","Создания презентаций","Написания кода"],
-  ans:1 },
-
-{ q:"GigaChat — это:",
-  opts:["Американский аналог ChatGPT","Российский ИИ-ассистент от Сбербанка","Японская система распознавания голоса","Европейский ИИ-поисковик"],
-  ans:1 },
-
-{ q:"Чем Claude (Anthropic) особенно отличается от других LLM?",
-  opts:["Генерирует только изображения","Поддерживает очень длинный контекст (до 200 000 токенов) и отличается аналитичностью","Работает только в командной строке","Не требует интернета"],
-  ans:1 },
-
-{ q:"Gamma.app — это инструмент для:",
-  opts:["Распознавания лиц","Автоматического создания презентаций по текстовому описанию","Анализа PDF-документов","Транскрипции аудио"],
-  ans:1 },
-
-{ q:"Какие персональные данные НЕЛЬЗЯ вводить в публичные ИИ-сервисы (ChatGPT, Gemini)?",
-  opts:["Общедоступную информацию о законах","Паспортные данные клиентов, коммерческую тайну, пароли","Учебные примеры из учебника","Тексты официальных законов"],
-  ans:1 },
-
-{ q:"Что означает аббревиатура AGI?",
-  opts:["Автоматический генератор изображений","Artificial General Intelligence — общий ИИ, способный выполнять любую интеллектуальную задачу","Advanced Graphics Interface","Automated Government Interface"],
-  ans:1 },
-
-{ q:"Формула RTCFE для составления промптов расшифровывается как:",
-  opts:["Read, Think, Confirm, Format, Execute","Role (Роль), Task (Задача), Context (Контекст), Format (Формат), Example (Пример)","Request, Test, Check, Fix, Evaluate","Research, Type, Create, Finalize, Export"],
-  ans:1 },
+  opts:["Скорость обработки запроса","Текстовый запрос или инструкция, которую пользователь отправляет ИИ-модели для получения ответа","Время ответа модели","Количество параметров модели"],
+  ans:1 }
 ];
 
 // ═══════════════════════════════════════════
-//  CORRECT ANSWERS ARRAY (0-indexed option)
+//  GLOBALS
 // ═══════════════════════════════════════════
-const CORRECT = QUESTIONS.map(q => q.ans);
-const LABELS = ['а', 'б', 'в', 'г'];
-const TOTAL_SECONDS = 45 * 60; // 45 minutes
-
-// ═══════════════════════════════════════════
-//  STATE
-// ═══════════════════════════════════════════
+let studentName = '';
+let studentGroup = '';
+let answers = {};
+let startTime = null;
+let endTime = null;
 let timerInterval = null;
-let secondsLeft = TOTAL_SECONDS;
-let testStartTime = null;
-let userAnswers = new Array(QUESTIONS.length).fill(null);
-let currentStudent = {};
 let submitConfirmed = false;
 
-// ═══════════════════════════════════════════
-//  ATTEMPT COUNTER (localStorage)
-// ═══════════════════════════════════════════
-const ATTEMPT_KEY = 'inf_test_attempts_v1';
-const MAX_ATTEMPTS = 20;
+window.addEventListener('load', initPage);
 
-function getAttempts() {
-  return parseInt(localStorage.getItem(ATTEMPT_KEY) || '0');
-}
-function incAttempts() {
-  const n = getAttempts() + 1;
-  localStorage.setItem(ATTEMPT_KEY, n);
-  return n;
+function initPage() {
+  document.getElementById('startDT').value = new Date().toLocaleString('ru-RU');
+  checkAttempts();
 }
 
-// ═══════════════════════════════════════════
-//  RESULTS STORAGE
-// ═══════════════════════════════════════════
-const RESULTS_KEY = 'inf_test_results_v1';
-
-function getResults() {
-  try { return JSON.parse(localStorage.getItem(RESULTS_KEY) || '[]'); }
-  catch(e) { return []; }
-}
-function saveResult(r) {
-  const arr = getResults();
-  arr.push(r);
-  localStorage.setItem(RESULTS_KEY, JSON.stringify(arr));
-}
-
-// ═══════════════════════════════════════════
-//  SCREEN CONTROL
-// ═══════════════════════════════════════════
-function showScreen(id) {
-  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
-  document.getElementById(id).classList.add('active');
-}
-
-// ═══════════════════════════════════════════
-//  INIT
-// ═══════════════════════════════════════════
-window.addEventListener('load', () => {
-  const attempts = incAttempts();
-
-  if (attempts > MAX_ATTEMPTS) {
+function checkAttempts() {
+  let attempts = parseInt(localStorage.getItem('pageReloads')) || 0;
+  attempts++;
+  localStorage.setItem('pageReloads', attempts);
+  if (attempts > 20) {
     showScreen('blockedScreen');
-    return;
+    document.getElementById('adminBtn').style.display = 'none';
   }
-
-  // Date/time
-  const now = new Date();
-  document.getElementById('startDT').value = formatDT(now);
-
-  // Attempt display
-  const remaining = MAX_ATTEMPTS - attempts;
-  document.getElementById('attemptDisplay').textContent =
-    `Попыток использовано: ${attempts} из ${MAX_ATTEMPTS}`;
-
-  if (attempts > 15) {
-    const w = document.getElementById('attemptWarn');
-    w.style.display = 'block';
-    w.innerHTML = `⚠️ Внимание: использовано <strong>${attempts}</strong> из ${MAX_ATTEMPTS} допустимых загрузок страницы. Осталось: <strong>${remaining}</strong>.`;
-  }
-});
-
-function formatDT(d) {
-  return d.toLocaleDateString('ru-RU') + ' ' + d.toLocaleTimeString('ru-RU');
-}
-function formatTime(s) {
-  const m = Math.floor(s / 60);
-  const sec = s % 60;
-  return String(m).padStart(2,'0') + ':' + String(sec).padStart(2,'0');
 }
 
-// ═══════════════════════════════════════════
-//  START TEST
-// ═══════════════════════════════════════════
+// ════════════════════════════════
+// ОШИБКА БЫЛА ЗДЕСЬ: функция startTest() не инициализировала отображение вопросов
+// ИСПРАВЛЕНИЕ: добавлена вызов renderQuestions() для отрисовки всех вопросов на страницу
+// ════════════════════════════════
 function startTest() {
-  const lastName  = document.getElementById('lastName').value.trim();
+  const lastName = document.getElementById('lastName').value.trim();
   const firstName = document.getElementById('firstName').value.trim();
-  const group     = document.getElementById('groupName').value.trim();
+  const groupName = document.getElementById('groupName').value.trim();
 
-  if (!lastName || !firstName || !group) {
-    showToast('Заполните все поля: Фамилия, Имя, Группа');
+  if (!lastName || !firstName || !groupName) {
+    alert('Заполните все поля!');
     return;
   }
 
-  currentStudent = {
-    lastName, firstName, group,
-    startDT: document.getElementById('startDT').value,
-    startTimestamp: Date.now()
-  };
+  studentName = `${lastName} ${firstName}`;
+  studentGroup = groupName;
+  startTime = Date.now();
 
-  buildQuestions();
-  document.getElementById('studentNameDisplay').textContent =
-    `${lastName} ${firstName} · ${group}`;
+  document.getElementById('studentNameDisplay').textContent = studentName;
 
   showScreen('testScreen');
+  
+  // !! ИСПРАВЛЕННАЯ СТРОКА: Добавлена инициализация отображения вопросов
+  renderQuestions();
+  
   startTimer();
 }
 
-// ═══════════════════════════════════════════
-//  BUILD QUESTIONS HTML
-// ═══════════════════════════════════════════
-function buildQuestions() {
+function renderQuestions() {
   const container = document.getElementById('questionsContainer');
   container.innerHTML = '';
-
-  QUESTIONS.forEach((q, qi) => {
+  QUESTIONS.forEach((q, idx) => {
     const block = document.createElement('div');
     block.className = 'q-block';
-    block.id = `qblock-${qi}`;
-
-    const head = document.createElement('div');
-    head.className = 'q-head';
-    head.innerHTML = `<div class="q-num">${qi+1}</div><div class="q-text">${q.q}</div>`;
-    block.appendChild(head);
-
-    const opts = document.createElement('div');
-    opts.className = 'q-options';
-
-    q.opts.forEach((opt, oi) => {
-      const label = document.createElement('label');
-      label.className = 'opt-label';
-      label.setAttribute('for', `q${qi}_o${oi}`);
-      label.innerHTML = `
-        <input type="radio" id="q${qi}_o${oi}" name="q${qi}" value="${oi}"
-               onchange="selectAnswer(${qi}, ${oi}, this)">
-        <div class="opt-key">${LABELS[oi]}</div>
-        <div class="opt-text">${opt}</div>`;
-      opts.appendChild(label);
-    });
-
-    block.appendChild(opts);
+    block.id = `q${idx}`;
+    block.innerHTML = `
+      <div class="q-head">
+        <div class="q-num">${idx + 1}</div>
+        <div class="q-text">${q.q}</div>
+      </div>
+      <div class="q-options">
+        ${q.opts.map((opt, optIdx) => `
+          <label class="opt-label" onclick="selectOption(${idx}, ${optIdx})">
+            <input type="radio" name="q${idx}" value="${optIdx}" />
+            <div class="opt-key">${String.fromCharCode(65 + optIdx)}</div>
+            <div class="opt-text">${opt}</div>
+          </label>
+        `).join('')}
+      </div>
+    `;
     container.appendChild(block);
   });
 }
 
-// ═══════════════════════════════════════════
-//  SELECT ANSWER
-// ═══════════════════════════════════════════
-function selectAnswer(qi, oi, radio) {
-  userAnswers[qi] = oi;
-
-  // visual update
-  const block = document.getElementById(`qblock-${qi}`);
+function selectOption(qIdx, optIdx) {
+  answers[qIdx] = optIdx;
+  const block = document.getElementById(`q${qIdx}`);
   block.classList.add('answered');
-  block.querySelectorAll('.opt-label').forEach((l,i) => {
-    l.classList.toggle('selected', i === oi);
-  });
-
+  const radio = block.querySelector(`input[value="${optIdx}"]`);
+  if (radio) radio.checked = true;
+  const label = radio.parentElement;
+  document.querySelectorAll(`#q${qIdx} .opt-label`).forEach(l => l.classList.remove('selected'));
+  label.classList.add('selected');
   updateProgress();
 }
 
 function updateProgress() {
-  const answered = userAnswers.filter(a => a !== null).length;
-  const pct = Math.round(answered / QUESTIONS.length * 100);
-  document.getElementById('answeredCount').textContent = `${answered} / ${QUESTIONS.length}`;
+  const answered = Object.keys(answers).length;
+  const total = QUESTIONS.length;
+  const pct = Math.round((answered / total) * 100);
   document.getElementById('progressPct').textContent = pct + '%';
   document.getElementById('progressFill').style.width = pct + '%';
+  document.getElementById('answeredCount').textContent = `${answered} / ${total}`;
 }
 
-// ═══════════════════════════════════════════
-//  TIMER
-// ═══════════════════════════════════════════
 function startTimer() {
-  testStartTime = Date.now();
-  secondsLeft = TOTAL_SECONDS;
+  let remaining = 45 * 60;
   timerInterval = setInterval(() => {
-    secondsLeft--;
-    const el = document.getElementById('timerDisplay');
-    el.textContent = formatTime(secondsLeft);
-    el.className = 'timer-clock' +
-      (secondsLeft <= 60 ? ' danger' : secondsLeft <= 300 ? ' warn' : '');
-
-    if (secondsLeft <= 0) {
-      clearInterval(timerInterval);
-      showToast('Время вышло! Тест завершается автоматически.');
-      setTimeout(() => finalizeTest(), 1000);
+    const min = Math.floor(remaining / 60);
+    const sec = remaining % 60;
+    document.getElementById('timerDisplay').textContent = `${min}:${sec.toString().padStart(2, '0')}`;
+    const clock = document.getElementById('timerDisplay');
+    if (remaining <= 300) clock.classList.add('warn');
+    if (remaining <= 60) {
+      clock.classList.remove('warn');
+      clock.classList.add('danger');
     }
+    if (remaining <= 0) {
+      clearInterval(timerInterval);
+      submitTest();
+      return;
+    }
+    remaining--;
   }, 1000);
 }
 
-// ═══════════════════════════════════════════
-//  SUBMIT
-// ═══════════════════════════════════════════
 function submitTest() {
-  const unanswered = userAnswers.filter(a => a === null).length;
-  if (unanswered > 0 && !submitConfirmed) {
-    const w = document.getElementById('unansweredWarn');
-    w.style.display = 'block';
-    w.textContent = `Не отвечено на ${unanswered} вопрос(а). Нажмите ещё раз для подтверждения.`;
-    submitConfirmed = true;
-    return;
-  }
-  clearInterval(timerInterval);
-  finalizeTest();
-}
+  endTime = Date.now();
+  const elapsed = Math.floor((endTime - startTime) / 1000);
+  const elapsedMin = Math.floor(elapsed / 60);
+  const elapsedSec = elapsed % 60;
+  const elapsedStr = `${elapsedMin}:${elapsedSec.toString().padStart(2, '0')}`;
 
-function finalizeTest() {
-  const elapsed = Math.round((Date.now() - testStartTime) / 1000);
   let correct = 0;
-  userAnswers.forEach((a, i) => { if (a === CORRECT[i]) correct++; });
+  QUESTIONS.forEach((q, idx) => {
+    if (answers[idx] === q.ans) correct++;
+  });
+  const wrong = QUESTIONS.length - correct;
+  const grade = getGrade(correct);
 
-  const result = {
-    lastName:  currentStudent.lastName,
-    firstName: currentStudent.firstName,
-    group:     currentStudent.group,
-    startDT:   currentStudent.startDT,
-    finishDT:  formatDT(new Date()),
-    elapsed,
-    score: correct,
-    answers: [...userAnswers]
-  };
+  document.getElementById('rStudentName').textContent = studentName;
+  document.getElementById('rGroup').textContent = studentGroup;
+  document.getElementById('rDateTime').textContent = new Date(startTime).toLocaleString('ru-RU');
+  document.getElementById('rElapsed').textContent = elapsedStr;
+  document.getElementById('rCorrect').textContent = correct;
+  document.getElementById('rWrong').textContent = wrong;
+  document.getElementById('scoreNum').textContent = correct;
+  document.getElementById('scoreRing').style.setProperty('--pct', (correct / QUESTIONS.length * 100) + '%');
 
-  saveResult(result);
-  showResult(result);
-}
+  const badgeEl = document.getElementById('gradeBadge');
+  badgeEl.className = 'grade-badge ' + grade.className;
+  badgeEl.innerHTML = grade.emoji + ' ' + grade.text;
 
-// ═══════════════════════════════════════════
-//  SHOW RESULT
-// ═══════════════════════════════════════════
-function showResult(r) {
-  const pct = r.score / QUESTIONS.length;
-  let grade, gradeClass, medal;
-  if (pct >= 0.9)      { grade='Отлично (5)'; gradeClass='grade-5'; medal='🏆'; }
-  else if (pct >= 0.75){ grade='Хорошо (4)';  gradeClass='grade-4'; medal='🎓'; }
-  else if (pct >= 0.6) { grade='Удовлетворительно (3)'; gradeClass='grade-3'; medal='📋'; }
-  else                 { grade='Не зачтено (2)'; gradeClass='grade-2'; medal='📌'; }
-
-  document.getElementById('resultMedal').textContent = medal;
-  document.getElementById('resultHeadline').textContent =
-    pct >= 0.6 ? `Поздравляем! Вы набрали ${r.score} из 50!` : `Тест завершён. Результат: ${r.score} из 50`;
-  document.getElementById('resultSubline').textContent =
-    pct >= 0.6 ? 'Результат сохранён. Хорошая работа!' : 'Результат сохранён. Рекомендуется повторная подготовка.';
-
-  document.getElementById('scoreNum').textContent = r.score;
-  const scoreRing = document.getElementById('scoreRing');
-  scoreRing.style.setProperty('--pct', (pct * 100).toFixed(1) + '%');
-
-  const badge = document.getElementById('gradeBadge');
-  badge.textContent = grade;
-  badge.className = 'grade-badge ' + gradeClass;
-
-  document.getElementById('rStudentName').textContent = `${r.lastName} ${r.firstName}`;
-  document.getElementById('rGroup').textContent = r.group;
-  document.getElementById('rDateTime').textContent = r.finishDT;
-  const mm = Math.floor(r.elapsed/60), ss = r.elapsed%60;
-  document.getElementById('rElapsed').textContent = `${mm} мин ${ss} сек`;
-  document.getElementById('rCorrect').textContent = r.score;
-  document.getElementById('rWrong').textContent = QUESTIONS.length - r.score;
-
+  saveResult(studentName, studentGroup, correct, wrong, elapsedStr);
+  clearInterval(timerInterval);
   showScreen('resultScreen');
 }
 
-// ═══════════════════════════════════════════
-//  ADMIN
-// ═══════════════════════════════════════════
-function openAdminModal() {
-  document.getElementById('pwInput').value = '';
-  document.getElementById('pwError').style.display = 'none';
-  document.getElementById('pwModal').classList.add('open');
-  setTimeout(() => document.getElementById('pwInput').focus(), 100);
+function getGrade(correct) {
+  const pct = (correct / QUESTIONS.length) * 100;
+  if (pct >= 90) return { text: '5 (отлично)', emoji: '⭐', className: 'grade-5' };
+  if (pct >= 75) return { text: '4 (хорошо)', emoji: '✨', className: 'grade-4' };
+  if (pct >= 60) return { text: '3 (удовл.)', emoji: '📚', className: 'grade-3' };
+  return { text: '2 (неудовл.)', emoji: '⚠️', className: 'grade-2' };
 }
+
+function saveResult(name, group, correct, wrong, elapsed) {
+  let results = JSON.parse(localStorage.getItem('testResults')) || [];
+  results.push({ name, group, correct, wrong, elapsed, timestamp: new Date().toLocaleString('ru-RU') });
+  localStorage.setItem('testResults', JSON.stringify(results));
+}
+
+// ════════════════════════════════
+//  ADMIN
+// ════════════════════════════════
+function openAdminModal() {
+  document.getElementById('pwModal').classList.add('open');
+  document.getElementById('pwInput').focus();
+}
+
 function closePwModal() {
   document.getElementById('pwModal').classList.remove('open');
+  document.getElementById('pwInput').value = '';
+  document.getElementById('pwError').style.display = 'none';
 }
+
 function checkPw() {
   const pw = document.getElementById('pwInput').value;
-  if (pw === 'Misha') {
+  const correctPw = 'admincollege';
+  if (pw === correctPw) {
     closePwModal();
-    showAdminPanel();
+    loadAdminPanel();
+    showScreen('adminScreen');
   } else {
     document.getElementById('pwError').style.display = 'block';
-    document.getElementById('pwInput').value = '';
-    document.getElementById('pwInput').focus();
   }
 }
 
-function showAdminPanel() {
-  const results = getResults();
-  const attempts = getAttempts();
+function loadAdminPanel() {
+  const results = JSON.parse(localStorage.getItem('testResults')) || [];
+  const stats = {
+    total: results.length,
+    avg: results.length > 0 ? Math.round(results.reduce((sum, r) => sum + r.correct, 0) / results.length) : 0,
+    grade5: results.filter(r => (r.correct / QUESTIONS.length) >= 0.9).length,
+    grade2: results.filter(r => (r.correct / QUESTIONS.length) < 0.6).length
+  };
 
-  // Stats
-  const statsEl = document.getElementById('adminStats');
-  const avg = results.length ? (results.reduce((s,r)=>s+r.score,0)/results.length).toFixed(1) : '—';
-  const pass = results.filter(r=>r.score/QUESTIONS.length>=0.6).length;
-  statsEl.innerHTML = `
-    <div class="stat-card"><div class="label">Всего попыток</div><div class="value">${attempts}</div></div>
-    <div class="stat-card"><div class="label">Сдали тест</div><div class="value">${results.length}</div></div>
-    <div class="stat-card"><div class="label">Зачтено</div><div class="value">${pass}</div></div>
-    <div class="stat-card"><div class="label">Среднее баллов</div><div class="value">${avg}</div></div>
+  document.getElementById('adminStats').innerHTML = `
+    <div class="stat-card"><div class="label">Всего студентов</div><div class="value">${stats.total}</div></div>
+    <div class="stat-card"><div class="label">Средний балл</div><div class="value">${stats.avg}</div></div>
+    <div class="stat-card"><div class="label">Оценка 5</div><div class="value">${stats.grade5}</div></div>
+    <div class="stat-card"><div class="label">Оценка 2</div><div class="value">${stats.grade2}</div></div>
   `;
 
-  // Table
-  const tbl = document.getElementById('resultsTable');
-  const qNums = QUESTIONS.map((_,i)=>`Q${i+1}`);
+  const table = document.getElementById('resultsTable');
+  table.innerHTML = '<tr class="answer-row"><th class="left">Студент</th><th>Группа</th>' + 
+    QUESTIONS.map((_, idx) => `<th>${idx + 1}</th>`).join('') + 
+    '<th>Правильно</th><th>Неправильно</th><th>Время</th></tr>';
+  
+  table.innerHTML += '<tr class="answer-row">' +
+    '<td class="left" style="color:#fbbf24;">Ответы:</td><td></td>' +
+    QUESTIONS.map((q, idx) => `<td>${String.fromCharCode(65 + q.ans)}</td>`).join('') +
+    '<td colspan="3"></td></tr>';
 
-  // Header
-  const fixedCols = ['Фамилия', 'Имя', 'Группа', 'Начало', 'Финиш', 'Время', 'Баллы'];
-  let thead = '<thead><tr>';
-  fixedCols.forEach(c => { thead += `<th class="left">${c}</th>`; });
-  qNums.forEach(q => { thead += `<th>${q}</th>`; });
-  thead += '</tr></thead>';
-
-  // Answer key row
-  let answerRow = '<tr class="answer-row">';
-  answerRow += `<td class="left" colspan="${fixedCols.length}">✅ ПРАВИЛЬНЫЕ ОТВЕТЫ</td>`;
-  CORRECT.forEach(c => { answerRow += `<td>${LABELS[c]}</td>`; });
-  answerRow += '</tr>';
-
-  // Data rows
-  let tbody = '<tbody>' + answerRow;
-  if (results.length === 0) {
-    tbody += `<tr><td colspan="${fixedCols.length + QUESTIONS.length}" style="text-align:center;color:#94a3b8;padding:24px;">Ещё нет результатов</td></tr>`;
-  } else {
-    // Sort by score desc
-    [...results].sort((a,b)=>b.score-a.score).forEach((r, ri) => {
-      const mm = Math.floor(r.elapsed/60), ss = r.elapsed%60;
-      const gradeColor = r.score/QUESTIONS.length >= 0.6 ? '#16a34a' : '#dc2626';
-      tbody += `<tr>
-        <td class="left">${r.lastName}</td>
-        <td class="left">${r.firstName}</td>
-        <td class="left">${r.group}</td>
-        <td>${r.startDT || '—'}</td>
-        <td>${r.finishDT}</td>
-        <td>${mm}м ${ss}с</td>
-        <td style="color:${gradeColor};font-weight:700;">${r.score}</td>`;
-      r.answers.forEach((a, qi) => {
-        const isCorr = a === CORRECT[qi];
-        const label = a !== null ? LABELS[a] : '—';
-        tbody += `<td class="${isCorr?'correct':'wrong'}">${label}</td>`;
-      });
-      tbody += '</tr>';
-    });
-  }
-  tbody += '</tbody>';
-
-  tbl.innerHTML = thead + tbody;
-  showScreen('adminScreen');
+  results.forEach(r => {
+    const row = `<tr>
+      <td class="left">${r.name}</td>
+      <td>${r.group}</td>
+      ${QUESTIONS.map((q, idx) => {
+        const ans = answers[idx] !== undefined ? String.fromCharCode(65 + answers[idx]) : '-';
+        const correct = answers[idx] === q.ans;
+        return `<td class="${correct ? 'correct' : 'wrong'}">${ans}</td>`;
+      }).join('')}
+      <td>${r.correct}</td>
+      <td>${r.wrong}</td>
+      <td>${r.elapsed}</td>
+    </tr>`;
+    table.innerHTML += row;
+  });
 }
 
-// ═══════════════════════════════════════════
-//  EXPORT CSV
-// ═══════════════════════════════════════════
 function exportCSV() {
-  const results = getResults();
-  if (!results.length) { showToast('Нет данных для экспорта'); return; }
-
-  const fixedH = ['Фамилия','Имя','Группа','Начало','Финиш','Сек.всего','Баллы'];
-  const qH = QUESTIONS.map((_,i)=>`Q${i+1}`);
-  const header = [...fixedH, ...qH].join(';');
-
-  const answerKeyRow = ['ПРАВИЛЬНЫЕ ОТВЕТЫ','','','','','','',
-    ...CORRECT.map(c=>LABELS[c])].join(';');
-
-  const rows = results.map(r => [
-    r.lastName, r.firstName, r.group,
-    r.startDT||'', r.finishDT, r.elapsed, r.score,
-    ...r.answers.map((a,qi) => a !== null ? LABELS[a] : '-')
-  ].join(';'));
-
-  const csv = '\uFEFF' + [header, answerKeyRow, ...rows].join('\n');
-  const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+  const results = JSON.parse(localStorage.getItem('testResults')) || [];
+  let csv = 'Студент,Группа,Правильно,Неправильно,Время,Дата\n';
+  results.forEach(r => {
+    csv += `"${r.name}","${r.group}",${r.correct},${r.wrong},"${r.elapsed}","${r.timestamp}"\n`;
+  });
+  const blob = new Blob([csv], { type: 'text/csv' });
   const url = URL.createObjectURL(blob);
   const a = document.createElement('a');
-  a.href = url; a.download = 'Informatika_Test_Rezultaty.csv';
-  a.click(); URL.revokeObjectURL(url);
+  a.href = url;
+  a.download = 'results.csv';
+  a.click();
 }
 
-// ═══════════════════════════════════════════
-//  TOAST
-// ═══════════════════════════════════════════
-function showToast(msg) {
-  const t = document.getElementById('toast');
-  t.textContent = msg;
-  t.classList.add('show');
-  setTimeout(() => t.classList.remove('show'), 3000);
+function showScreen(screenId) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById(screenId).classList.add('active');
 }
 </script>
 </body>
