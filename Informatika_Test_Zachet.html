@@ -1,0 +1,1454 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Зачёт: Информатика 10–11 | Юридический колледж</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;600&display=swap');
+
+  :root {
+    --navy:   #1a2744;
+    --blue:   #2563eb;
+    --lblue:  #dbeafe;
+    --teal:   #0f766e;
+    --lteal:  #ccfbf1;
+    --gold:   #b45309;
+    --lgold:  #fef3c7;
+    --red:    #dc2626;
+    --lred:   #fee2e2;
+    --green:  #16a34a;
+    --lgreen: #dcfce7;
+    --gray:   #64748b;
+    --lgray:  #f1f5f9;
+    --border: #e2e8f0;
+    --white:  #ffffff;
+    --bg:     #f8fafc;
+    --text:   #1e293b;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'IBM Plex Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+  }
+
+  /* ── SCREENS ── */
+  .screen { display: none; }
+  .screen.active { display: block; }
+
+  /* ── ADMIN BUTTON ── */
+  #adminBtn {
+    position: fixed;
+    top: 16px; left: 16px;
+    z-index: 9999;
+    background: rgba(255,255,255,0.18);
+    border: 1.5px solid rgba(255,255,255,0.35);
+    border-radius: 10px;
+    width: 44px; height: 44px;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: background 0.2s, border-color 0.2s;
+    backdrop-filter: blur(4px);
+  }
+  #adminBtn:hover { background: rgba(255,255,255,0.32); border-color: rgba(255,255,255,0.6); }
+  #adminBtn svg { width: 24px; height: 24px; }
+
+  /* ── HEADER BANNER ── */
+  .banner {
+    background: linear-gradient(135deg, var(--navy) 0%, #1e3a8a 60%, #1a2744 100%);
+    padding: 48px 24px 40px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .banner::before {
+    content: '§';
+    position: absolute;
+    font-size: 320px;
+    color: rgba(255,255,255,0.03);
+    top: -60px; right: -20px;
+    font-family: serif;
+    pointer-events: none;
+  }
+  .banner-label {
+    display: inline-block;
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 20px;
+    padding: 4px 16px;
+    font-size: 11px;
+    color: #93c5fd;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    font-family: 'IBM Plex Mono', monospace;
+  }
+  .banner h1 {
+    font-size: clamp(22px, 4vw, 32px);
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 8px;
+    letter-spacing: -0.02em;
+  }
+  .banner p { color: #93c5fd; font-size: 14px; }
+
+  /* ── FORM CARD ── */
+  .card {
+    max-width: 680px;
+    margin: 32px auto;
+    background: var(--white);
+    border-radius: 16px;
+    border: 1px solid var(--border);
+    overflow: hidden;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+  }
+  .card-header {
+    background: var(--lgray);
+    border-bottom: 1px solid var(--border);
+    padding: 18px 24px;
+    font-weight: 600;
+    font-size: 13px;
+    color: var(--gray);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+  .card-body { padding: 28px 24px; }
+
+  .field-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+  .field-row.full { grid-template-columns: 1fr; }
+
+  .field label {
+    display: block;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--gray);
+    margin-bottom: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+  .field input {
+    width: 100%;
+    padding: 11px 14px;
+    border: 1.5px solid var(--border);
+    border-radius: 8px;
+    font-size: 15px;
+    font-family: 'IBM Plex Sans', sans-serif;
+    color: var(--text);
+    background: var(--bg);
+    transition: border-color 0.2s;
+    outline: none;
+  }
+  .field input:focus { border-color: var(--blue); background: #fff; }
+  .field input[readonly] {
+    background: var(--lgray);
+    color: var(--gray);
+    cursor: default;
+  }
+
+  /* ── INFO BOX ── */
+  .info-box {
+    background: var(--lblue);
+    border-left: 4px solid var(--blue);
+    border-radius: 0 8px 8px 0;
+    padding: 14px 18px;
+    font-size: 13.5px;
+    color: #1e40af;
+    margin-bottom: 24px;
+  }
+  .info-box strong { font-weight: 600; }
+
+  .warn-box {
+    background: var(--lgold);
+    border-left: 4px solid var(--gold);
+    border-radius: 0 8px 8px 0;
+    padding: 14px 18px;
+    font-size: 13.5px;
+    color: #78350f;
+    margin-top: 16px;
+  }
+
+  /* ── ATTEMPT COUNTER ── */
+  #attemptDisplay {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    color: var(--gray);
+    text-align: right;
+    margin-bottom: 12px;
+  }
+
+  /* ── START BUTTON ── */
+  .btn-start {
+    width: 100%;
+    padding: 16px;
+    background: linear-gradient(135deg, var(--navy), #1d4ed8);
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 600;
+    font-family: 'IBM Plex Sans', sans-serif;
+    cursor: pointer;
+    transition: opacity 0.2s, transform 0.1s;
+    letter-spacing: 0.01em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 8px;
+  }
+  .btn-start:hover { opacity: 0.92; transform: translateY(-1px); }
+  .btn-start:active { transform: translateY(0); }
+  .btn-start:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
+
+  /* ── BLOCKED SCREEN ── */
+  #blockedScreen {
+    max-width: 480px;
+    margin: 80px auto;
+    text-align: center;
+    padding: 48px 32px;
+    background: var(--white);
+    border-radius: 16px;
+    border: 2px solid var(--red);
+  }
+  #blockedScreen .icon { font-size: 64px; margin-bottom: 16px; }
+  #blockedScreen h2 { color: var(--red); font-size: 22px; margin-bottom: 12px; }
+  #blockedScreen p { color: var(--gray); font-size: 14px; line-height: 1.6; }
+
+  /* ══════════════════════════════
+     TEST SCREEN
+  ══════════════════════════════ */
+  #testScreen { max-width: 860px; margin: 0 auto; padding: 24px 16px 60px; }
+
+  /* sticky timer bar */
+  .timer-bar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--white);
+    border-bottom: 2px solid var(--border);
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 28px;
+    border-radius: 0 0 12px 12px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+  .timer-info { font-size: 13px; color: var(--gray); }
+  .timer-info strong { color: var(--text); }
+  .timer-clock {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 26px;
+    font-weight: 600;
+    color: var(--navy);
+    letter-spacing: 0.05em;
+    transition: color 0.3s;
+  }
+  .timer-clock.warn { color: var(--gold); }
+  .timer-clock.danger { color: var(--red); animation: pulse 1s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.5} }
+
+  .progress-wrap { margin-bottom: 28px; }
+  .progress-label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    color: var(--gray);
+    margin-bottom: 6px;
+  }
+  .progress-bar {
+    height: 6px;
+    background: var(--border);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+  .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--blue), var(--teal));
+    border-radius: 3px;
+    transition: width 0.3s;
+  }
+
+  /* question block */
+  .q-block {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    margin-bottom: 20px;
+    overflow: hidden;
+    transition: border-color 0.2s;
+  }
+  .q-block.answered { border-color: var(--teal); }
+
+  .q-head {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 18px 20px 14px;
+    border-bottom: 1px solid var(--border);
+    background: var(--lgray);
+  }
+  .q-num {
+    flex-shrink: 0;
+    width: 32px; height: 32px;
+    background: var(--navy);
+    color: #fff;
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    font-weight: 600;
+  }
+  .q-block.answered .q-num { background: var(--teal); }
+  .q-text {
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 1.55;
+    color: var(--text);
+    padding-top: 4px;
+  }
+
+  .q-options { padding: 14px 20px 18px; display: flex; flex-direction: column; gap: 10px; }
+
+  .opt-label {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 12px 16px;
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.15s, border-color 0.15s;
+    position: relative;
+  }
+  .opt-label:hover { background: var(--lblue); border-color: var(--blue); }
+  .opt-label input[type=radio] { display: none; }
+
+  .opt-key {
+    flex-shrink: 0;
+    width: 26px; height: 26px;
+    border-radius: 50%;
+    background: var(--lgray);
+    border: 1.5px solid var(--border);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--gray);
+    transition: background 0.15s, border-color 0.15s;
+  }
+  .opt-text { font-size: 14px; line-height: 1.5; padding-top: 3px; }
+
+  /* selected state */
+  .opt-label.selected {
+    background: #eff6ff;
+    border-color: var(--blue);
+  }
+  .opt-label.selected .opt-key {
+    background: var(--blue);
+    border-color: var(--blue);
+    color: #fff;
+  }
+
+  /* ── SUBMIT ── */
+  .submit-area {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0 16px 60px;
+  }
+  #submitBtn {
+    width: 100%;
+    padding: 18px;
+    background: linear-gradient(135deg, var(--teal), #0d9488);
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    font-size: 17px;
+    font-weight: 700;
+    font-family: 'IBM Plex Sans', sans-serif;
+    cursor: pointer;
+    transition: opacity 0.2s, transform 0.1s;
+    letter-spacing: 0.01em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    box-shadow: 0 4px 18px rgba(15,118,110,0.3);
+  }
+  #submitBtn:hover { opacity: 0.9; transform: translateY(-1px); }
+  #unansweredWarn {
+    text-align: center;
+    color: var(--gold);
+    font-size: 13px;
+    margin-top: 10px;
+    display: none;
+  }
+
+  /* ══════════════════════════════
+     RESULT SCREEN
+  ══════════════════════════════ */
+  #resultScreen {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 40px 16px 80px;
+    text-align: center;
+  }
+  .result-medal { font-size: 72px; margin-bottom: 12px; }
+  .result-title { font-size: clamp(22px, 4vw, 30px); font-weight: 700; color: var(--navy); margin-bottom: 8px; }
+  .result-sub { font-size: 15px; color: var(--gray); margin-bottom: 32px; }
+
+  .score-ring {
+    width: 180px; height: 180px;
+    margin: 0 auto 32px;
+    border-radius: 50%;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    background: conic-gradient(var(--teal) 0%, var(--teal) var(--pct, 0%), var(--border) var(--pct, 0%));
+    position: relative;
+  }
+  .score-ring::before {
+    content: '';
+    position: absolute;
+    inset: 14px;
+    background: var(--white);
+    border-radius: 50%;
+  }
+  .score-inner { position: relative; z-index: 1; text-align: center; }
+  .score-num { font-size: 42px; font-weight: 700; color: var(--navy); font-family: 'IBM Plex Mono', monospace; line-height: 1; }
+  .score-denom { font-size: 16px; color: var(--gray); }
+
+  .grade-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 24px;
+    border-radius: 100px;
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 28px;
+  }
+  .grade-5 { background: var(--lgreen); color: var(--green); }
+  .grade-4 { background: var(--lblue); color: #1d4ed8; }
+  .grade-3 { background: var(--lgold); color: var(--gold); }
+  .grade-2 { background: var(--lred); color: var(--red); }
+
+  .result-details {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 24px;
+    text-align: left;
+    margin-bottom: 24px;
+  }
+  .result-details h3 { font-size: 14px; color: var(--gray); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 14px; }
+  .detail-row { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid var(--border); font-size: 14px; }
+  .detail-row:last-child { border-bottom: none; }
+  .detail-row .val { font-family: 'IBM Plex Mono', monospace; font-weight: 600; color: var(--navy); }
+
+  /* ══════════════════════════════
+     ADMIN SCREEN
+  ══════════════════════════════ */
+  #adminScreen { padding: 24px 12px 60px; }
+  .admin-header {
+    background: var(--navy);
+    color: #fff;
+    padding: 20px 24px;
+    border-radius: 12px;
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .admin-header h2 { font-size: 18px; }
+  .btn-back {
+    padding: 8px 18px;
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 8px;
+    color: #fff;
+    font-size: 13px;
+    cursor: pointer;
+    font-family: 'IBM Plex Sans', sans-serif;
+    transition: background 0.2s;
+  }
+  .btn-back:hover { background: rgba(255,255,255,0.25); }
+
+  .admin-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+  .stat-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px 18px;
+  }
+  .stat-card .label { font-size: 11px; color: var(--gray); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 4px; }
+  .stat-card .value { font-size: 28px; font-weight: 700; color: var(--navy); font-family: 'IBM Plex Mono', monospace; }
+
+  .table-wrap { overflow-x: auto; }
+  table.results-tbl {
+    border-collapse: collapse;
+    width: 100%;
+    font-size: 12px;
+    background: var(--white);
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+  }
+  table.results-tbl th {
+    background: var(--navy);
+    color: #fff;
+    padding: 10px 10px;
+    text-align: center;
+    white-space: nowrap;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    position: sticky;
+    top: 0;
+  }
+  table.results-tbl th.left { text-align: left; }
+  table.results-tbl td {
+    padding: 8px 10px;
+    border-bottom: 1px solid var(--border);
+    text-align: center;
+    font-family: 'IBM Plex Mono', monospace;
+    white-space: nowrap;
+  }
+  table.results-tbl td.left { text-align: left; font-family: 'IBM Plex Sans', sans-serif; }
+  table.results-tbl tr:nth-child(even) td { background: var(--lgray); }
+  table.results-tbl tr.answer-row td {
+    background: var(--navy) !important;
+    color: #7dd3fc;
+    font-weight: 700;
+    font-size: 11px;
+  }
+  table.results-tbl tr.answer-row td.left { color: #fbbf24; }
+  td.correct { color: var(--green); font-weight: 700; }
+  td.wrong   { color: var(--red);   font-weight: 700; }
+
+  /* admin export btn */
+  .btn-export {
+    padding: 10px 20px;
+    background: var(--teal);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: 'IBM Plex Sans', sans-serif;
+    margin-bottom: 16px;
+    transition: opacity 0.2s;
+  }
+  .btn-export:hover { opacity: 0.85; }
+
+  /* ── PASSWORD MODAL ── */
+  .modal-overlay {
+    display: none;
+    position: fixed; inset: 0;
+    background: rgba(0,0,0,0.55);
+    z-index: 10000;
+    align-items: center; justify-content: center;
+  }
+  .modal-overlay.open { display: flex; }
+  .modal-box {
+    background: #fff;
+    border-radius: 14px;
+    padding: 36px 32px;
+    max-width: 380px;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+  }
+  .modal-box .icon { font-size: 40px; margin-bottom: 12px; }
+  .modal-box h3 { font-size: 18px; color: var(--navy); margin-bottom: 6px; }
+  .modal-box p { font-size: 13px; color: var(--gray); margin-bottom: 20px; }
+  .modal-box input {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1.5px solid var(--border);
+    border-radius: 8px;
+    font-size: 15px;
+    font-family: 'IBM Plex Sans', sans-serif;
+    text-align: center;
+    letter-spacing: 0.1em;
+    outline: none;
+    margin-bottom: 14px;
+  }
+  .modal-box input:focus { border-color: var(--blue); }
+  .modal-btn-row { display: flex; gap: 10px; }
+  .btn-modal-ok {
+    flex: 1; padding: 11px;
+    background: var(--navy); color: #fff;
+    border: none; border-radius: 8px;
+    font-size: 14px; font-weight: 600;
+    cursor: pointer;
+    font-family: 'IBM Plex Sans', sans-serif;
+    transition: opacity 0.2s;
+  }
+  .btn-modal-ok:hover { opacity: 0.85; }
+  .btn-modal-cancel {
+    flex: 1; padding: 11px;
+    background: var(--lgray); color: var(--gray);
+    border: 1px solid var(--border); border-radius: 8px;
+    font-size: 14px; cursor: pointer;
+    font-family: 'IBM Plex Sans', sans-serif;
+  }
+  .modal-error { color: var(--red); font-size: 12px; margin-top: -8px; margin-bottom: 10px; display: none; }
+
+  /* ── TOAST ── */
+  .toast {
+    position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%);
+    background: var(--navy); color: #fff;
+    padding: 12px 24px; border-radius: 100px;
+    font-size: 13.5px; font-weight: 500;
+    z-index: 99999; opacity: 0;
+    transition: opacity 0.3s;
+    pointer-events: none;
+    white-space: nowrap;
+  }
+  .toast.show { opacity: 1; }
+
+  @media (max-width: 600px) {
+    .field-row { grid-template-columns: 1fr; }
+    .timer-clock { font-size: 20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══ ADMIN BUTTON (scales of justice) ══ -->
+<button id="adminBtn" onclick="openAdminModal()" title="Панель преподавателя">
+  <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 3v1m0 16v1M3 12h1m16 0h1"/>
+    <line x1="12" y1="4" x2="12" y2="20"/>
+    <path d="M6 8l-3 6h6L6 8z"/>
+    <path d="M18 8l-3 6h6l-3-6z"/>
+    <line x1="5" y1="20" x2="19" y2="20"/>
+  </svg>
+</button>
+
+<!-- ══ PASSWORD MODAL ══ -->
+<div class="modal-overlay" id="pwModal">
+  <div class="modal-box">
+    <div class="icon">⚖️</div>
+    <h3>Панель преподавателя</h3>
+    <p>Введите пароль для просмотра результатов</p>
+    <input type="password" id="pwInput" placeholder="••••••" onkeydown="if(event.key==='Enter')checkPw()">
+    <div class="modal-error" id="pwError">Неверный пароль</div>
+    <div class="modal-btn-row">
+      <button class="btn-modal-ok" onclick="checkPw()">Войти</button>
+      <button class="btn-modal-cancel" onclick="closePwModal()">Отмена</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══ TOAST ══ -->
+<div class="toast" id="toast"></div>
+
+<!-- ════════════════════════════════════════════
+     SCREEN 1: REGISTRATION
+════════════════════════════════════════════ -->
+<div id="regScreen" class="screen active">
+  <div class="banner">
+    <div class="banner-label">Юридический колледж · Информатика 10–11</div>
+    <h1>Зачётное тестирование</h1>
+    <p>50 вопросов · 45 минут · Закрытая форма</p>
+  </div>
+
+  <div style="max-width:680px;margin:0 auto;padding:0 16px 60px;">
+    <div class="card" style="margin-top:32px;">
+      <div class="card-header">Идентификация студента</div>
+      <div class="card-body">
+        <div id="attemptDisplay"></div>
+        <div class="field-row">
+          <div class="field">
+            <label>Фамилия *</label>
+            <input type="text" id="lastName" placeholder="Иванов" autocomplete="off">
+          </div>
+          <div class="field">
+            <label>Имя *</label>
+            <input type="text" id="firstName" placeholder="Алексей" autocomplete="off">
+          </div>
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label>Группа *</label>
+            <input type="text" id="groupName" placeholder="ЮР-101" autocomplete="off">
+          </div>
+          <div class="field">
+            <label>Дата и время начала</label>
+            <input type="text" id="startDT" readonly>
+          </div>
+        </div>
+
+        <div class="info-box">
+          <strong>Правила тестирования:</strong><br>
+          • 50 вопросов по курсу информатики и теме «Искусственный интеллект»<br>
+          • Время на выполнение: <strong>45 минут</strong>. При истечении тест завершается автоматически.<br>
+          • Каждый вопрос имеет 1 правильный ответ из 4<br>
+          • После нажатия «Старт» вернуться к форме нельзя<br>
+          • Нажатие «Отправить» завершает попытку без возможности изменений
+        </div>
+
+        <div class="warn-box" id="attemptWarn" style="display:none;"></div>
+
+        <button class="btn-start" id="startBtn" onclick="startTest()">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+          Начать тестирование
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════
+     SCREEN 1b: BLOCKED
+════════════════════════════════════════════ -->
+<div id="blockedScreen" class="screen">
+  <div style="max-width:480px;margin:80px auto;text-align:center;padding:48px 32px;background:#fff;border-radius:16px;border:2px solid #dc2626;">
+    <div style="font-size:64px;margin-bottom:16px;">🚫</div>
+    <h2 style="color:#dc2626;font-size:22px;margin-bottom:12px;">Доступ заблокирован</h2>
+    <p style="color:#64748b;font-size:14px;line-height:1.6;">
+      Превышено допустимое количество попыток (более 20 обновлений страницы).<br><br>
+      Тестирование для данного устройства <strong>заблокировано</strong>.<br>
+      Результат: <strong style="color:#dc2626;">НЕ ЗАЧТЕНО</strong>.<br><br>
+      Обратитесь к преподавателю.
+    </p>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════
+     SCREEN 2: TEST
+════════════════════════════════════════════ -->
+<div id="testScreen" class="screen">
+
+  <div class="timer-bar">
+    <div class="timer-info">
+      <div id="studentNameDisplay" style="font-weight:600;font-size:14px;color:#1e293b;"></div>
+      <div>Осталось времени</div>
+    </div>
+    <div class="timer-clock" id="timerDisplay">45:00</div>
+    <div class="timer-info" style="text-align:right;">
+      <div>Отвечено</div>
+      <div id="answeredCount" style="font-weight:600;font-size:14px;color:#1e293b;">0 / 50</div>
+    </div>
+  </div>
+
+  <div style="max-width:860px;margin:0 auto;padding:0 16px;">
+    <div class="progress-wrap">
+      <div class="progress-label">
+        <span>Прогресс выполнения</span>
+        <span id="progressPct">0%</span>
+      </div>
+      <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
+    </div>
+  </div>
+
+  <div id="questionsContainer" style="max-width:860px;margin:0 auto;padding:0 16px;"></div>
+
+  <div class="submit-area">
+    <button id="submitBtn" onclick="submitTest()">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+      Завершить тест и получить результат
+    </button>
+    <div id="unansweredWarn">Остались неотвеченные вопросы. Вы уверены? Нажмите ещё раз для подтверждения.</div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════
+     SCREEN 3: RESULT
+════════════════════════════════════════════ -->
+<div id="resultScreen" class="screen">
+  <div class="banner">
+    <div class="banner-label">Результат тестирования</div>
+    <h1 id="resultHeadline">Тест завершён!</h1>
+    <p id="resultSubline">Результаты зафиксированы</p>
+  </div>
+  <div style="max-width:640px;margin:0 auto;padding:32px 16px 60px;text-align:center;">
+    <div id="resultMedal" class="result-medal">🎓</div>
+
+    <div id="scoreRing" class="score-ring">
+      <div class="score-inner">
+        <div class="score-num" id="scoreNum">0</div>
+        <div class="score-denom">из 50</div>
+      </div>
+    </div>
+
+    <div id="gradeBadge" class="grade-badge"></div>
+
+    <div class="result-details">
+      <h3>Детали</h3>
+      <div class="detail-row"><span>Студент</span><span class="val" id="rStudentName">—</span></div>
+      <div class="detail-row"><span>Группа</span><span class="val" id="rGroup">—</span></div>
+      <div class="detail-row"><span>Дата и время</span><span class="val" id="rDateTime">—</span></div>
+      <div class="detail-row"><span>Затрачено времени</span><span class="val" id="rElapsed">—</span></div>
+      <div class="detail-row"><span>Правильных ответов</span><span class="val" id="rCorrect">—</span></div>
+      <div class="detail-row"><span>Неправильных ответов</span><span class="val" id="rWrong">—</span></div>
+    </div>
+    <p style="color:var(--gray);font-size:13px;">Ваш результат сохранён. Преподаватель видит подробный отчёт.</p>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════
+     SCREEN 4: ADMIN
+════════════════════════════════════════════ -->
+<div id="adminScreen" class="screen">
+  <div class="admin-header">
+    <div>
+      <div style="font-size:12px;opacity:0.6;margin-bottom:4px;text-transform:uppercase;letter-spacing:0.08em;">Панель преподавателя</div>
+      <h2>Результаты тестирования — Информатика</h2>
+    </div>
+    <div style="display:flex;gap:10px;align-items:center;">
+      <button class="btn-export" onclick="exportCSV()">📥 Экспорт CSV</button>
+      <button class="btn-back" onclick="showScreen('regScreen')">← Назад</button>
+    </div>
+  </div>
+
+  <div class="admin-stats" id="adminStats"></div>
+
+  <div style="margin-bottom:12px;display:flex;align-items:center;justify-content:space-between;">
+    <div style="font-size:13px;font-weight:600;color:var(--navy);">
+      Таблица ответов студентов
+    </div>
+    <div style="font-size:11px;color:var(--gray);">
+      🟦 Шапка = правильные ответы &nbsp;|&nbsp; ✅ верно &nbsp;|&nbsp; ❌ неверно
+    </div>
+  </div>
+
+  <div class="table-wrap">
+    <table class="results-tbl" id="resultsTable"></table>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════
+     JAVASCRIPT
+════════════════════════════════════════════ -->
+<script>
+// ═══════════════════════════════════════════
+//  QUESTIONS DATA
+// ═══════════════════════════════════════════
+const QUESTIONS = [
+// ── Раздел 1: Текстовые документы ──────────
+{ q:"Какой инструмент Word позволяет автоматически создать список разделов документа с номерами страниц?",
+  opts:["Нумерация страниц","Автоматическое оглавление","Предметный указатель","Закладка"],
+  ans:1 },
+
+{ q:"Что такое колонтитул в текстовом документе?",
+  opts:["Особое форматирование первого абзаца","Надпись, повторяющаяся на каждой странице вверху или внизу","Номер страницы в центре листа","Заголовок таблицы"],
+  ans:1 },
+
+{ q:"Функция 'Слияние' (Mail Merge) в Word используется для:",
+  opts:["Объединения двух документов в один файл","Создания серийных писем на основе таблицы данных","Слияния нескольких стилей оформления","Копирования форматирования между абзацами"],
+  ans:1 },
+
+{ q:"Красная строка — это:",
+  opts:["Выделение первого слова красным цветом","Отступ первой строки абзаца","Горизонтальная линия красного цвета","Инструмент выделения ошибок"],
+  ans:1 },
+
+{ q:"Концевая сноска в Word отличается от обычной сноски тем, что:",
+  opts:["Выводится в конце документа (или раздела), а не внизу страницы","Имеет другой шрифт","Нумеруется буквами","Не отображается при печати"],
+  ans:0 },
+
+// ── Раздел 2: GIMP ──────────────────────────
+{ q:"Что такое пиксель?",
+  opts:["Минимальный элемент векторного изображения","Минимальная точка растрового изображения","Единица измерения разрешения экрана","Слой в графическом редакторе"],
+  ans:1 },
+
+{ q:"Чем растровое изображение отличается от векторного?",
+  opts:["Растровое состоит из математических формул, векторное — из пикселей","Растровое состоит из пикселей и теряет качество при увеличении; векторное описывается формулами и масштабируется без потерь","Векторное хранится в формате JPG, растровое — в SVG","Разница только в размере файла"],
+  ans:1 },
+
+{ q:"Инструмент 'Лассо' в GIMP предназначен для:",
+  opts:["Рисования прямых линий","Выделения области произвольной формы","Перемещения слоёв","Заливки цветом"],
+  ans:1 },
+
+{ q:"Какой формат изображения поддерживает прозрачность?",
+  opts:["JPEG","BMP","PNG","GIF (только для анимации)"],
+  ans:2 },
+
+{ q:"При уменьшении растрового изображения и последующем увеличении обратно до исходного размера качество изображения:",
+  opts:["Сохраняется полностью","Ухудшается, так как информация о пикселях утеряна","Улучшается за счёт интерполяции","Не изменяется при использовании PNG"],
+  ans:1 },
+
+// ── Раздел 3: Inkscape ──────────────────────
+{ q:"Что такое SVG-формат?",
+  opts:["Растровый формат для веб-изображений","Формат сжатия видео","Векторный формат изображений на основе XML, масштабируемый без потерь","Формат 3D-графики"],
+  ans:2 },
+
+{ q:"Операция 'Разбить контур' в Inkscape:",
+  opts:["Удаляет весь объект","Разбивает составной контур на отдельные части","Добавляет новый узел","Объединяет несколько контуров в один"],
+  ans:1 },
+
+{ q:"Кривая Безье в векторной графике — это:",
+  opts:["Прямая линия с двумя точками","Параметрическая кривая, задаваемая опорными точками и управляющими рычагами","Тип заливки объекта","Метод сжатия изображений"],
+  ans:1 },
+
+{ q:"Чем отличается однородная заливка от градиентной?",
+  opts:["Однородная — это текстура, градиентная — цвет","Однородная заполняет объект одним цветом, градиентная — плавным переходом цветов","Они ничем не отличаются","Градиентная используется только для текста"],
+  ans:1 },
+
+// ── Раздел 4: Презентации ──────────────────
+{ q:"Что такое 'Образец слайдов' в PowerPoint?",
+  opts:["Первый слайд презентации","Шаблон, задающий единый стиль для всех слайдов","Набор анимаций по умолчанию","Режим просмотра слайдов"],
+  ans:1 },
+
+{ q:"Что такое триггер анимации в PowerPoint?",
+  opts:["Автоматический запуск анимации при открытии файла","Событие (например, клик по объекту), запускающее конкретную анимацию","Переход между слайдами с эффектом","Звуковое сопровождение слайда"],
+  ans:1 },
+
+{ q:"Какой тип диаграммы лучше всего подходит для отображения долей (частей от целого)?",
+  opts:["Линейная диаграмма","Гистограмма (столбчатая)","Круговая (секторная) диаграмма","Диаграмма рассеяния"],
+  ans:2 },
+
+{ q:"Гиперссылка в презентации может вести:",
+  opts:["Только на внешний сайт","Только на другой слайд той же презентации","На другой слайд, на файл, на веб-страницу или на адрес e-mail","Только на документ Word"],
+  ans:2 },
+
+// ── Раздел 5: Excel ─────────────────────────
+{ q:"Что означает символ $ в адресе ячейки Excel (например, $A$1)?",
+  opts:["Денежный формат ячейки","Абсолютная адресация — адрес не изменяется при копировании формулы","Ссылка на другой лист","Защищённая ячейка"],
+  ans:1 },
+
+{ q:"Функция СЧЁТЕСЛИ в Excel:",
+  opts:["Суммирует значения ячеек, удовлетворяющих условию","Подсчитывает количество ячеек, удовлетворяющих условию","Находит среднее значение по условию","Проверяет логическое условие"],
+  ans:1 },
+
+
+{ q:"Расширенный фильтр в Excel отличается от автофильтра тем, что:",
+  opts:["Работает быстрее","Позволяет задать сложные условия отбора, включая вычисляемые критерии и несколько условий по разным столбцам","Может фильтровать только числа","Не требует выделения диапазона"],
+  ans:1 },
+
+{ q:"Что делает функция ЕСЛИ(A1>10; 'Да'; 'Нет') если A1=7?",
+  opts:["Возвращает 'Да'","Возвращает 'Нет'","Возвращает 0","Выдаёт ошибку"],
+  ans:1 },
+
+
+// ── Раздел 6: Базы данных ───────────────────
+{ q:"Что такое первичный ключ в реляционной базе данных?",
+  opts:["Поле с паролем доступа к БД","Уникальный идентификатор каждой записи в таблице","Первое поле любой таблицы","Индексированное числовое поле"],
+  ans:1 },
+
+{ q:"Связь 'один-ко-многим' в базе данных означает:",
+  opts:["Одна таблица связана с одной таблицей","Одной записи в главной таблице соответствует несколько записей в подчинённой","Каждая запись связана с каждой","Таблицы не имеют ключей"],
+  ans:1 },
+
+{ q:"Запрос с параметром в Access позволяет:",
+  opts:["Изменять структуру таблицы","Вводить условие отбора при каждом выполнении запроса","Создавать новую таблицу","Удалять записи автоматически"],
+  ans:1 },
+
+{ q:"Что такое нормализация базы данных?",
+  opts:["Форматирование данных в ячейках","Процесс организации данных для устранения избыточности и аномалий","Сортировка записей в таблице","Создание индексов для ускорения поиска"],
+  ans:1 },
+
+{ q:"Форма в СУБД Access используется для:",
+  opts:["Хранения данных","Выполнения запросов","Удобного ввода и отображения данных","Построения отчётов"],
+  ans:2 },
+
+// ── Раздел 7: HTML/CSS ──────────────────────
+{ q:"Что означает тег <h1> в HTML?",
+  opts:["Горизонтальная линия","Заголовок первого уровня (самый крупный)","Гиперссылка","Основной текст страницы"],
+  ans:1 },
+
+{ q:"Атрибут href в теге <a> задаёт:",
+  opts:["Цвет ссылки","Текст ссылки","Адрес перехода по ссылке","Размер шрифта ссылки"],
+  ans:2 },
+
+{ q:"Что означает запись color: #FFFFFF в CSS?",
+  opts:["Чёрный цвет","Прозрачный фон","Белый цвет (шестнадцатеричный код)","Серый цвет"],
+  ans:2 },
+
+{ q:"Разница между тегами <ol> и <ul> в HTML:",
+  opts:["<ol> — маркированный список, <ul> — нумерованный","<ol> — нумерованный список, <ul> — маркированный","Оба создают одинаковые списки","<ol> — для изображений"],
+  ans:1 },
+
+{ q:"Что делает свойство CSS display: none?",
+  opts:["Делает элемент прозрачным","Полностью скрывает элемент, он не занимает место на странице","Делает элемент блочным","Выравнивает элемент по центру"],
+  ans:1 },
+
+{ q:"Внешние стили CSS подключаются к HTML через тег:",
+  opts:["<style>","<css>","<link rel='stylesheet'>","<script src='style.css'>"],
+  ans:2 },
+
+// ── ИИ: Теория ──────────────────────────────
+{ q:"Что такое 'галлюцинация' в контексте больших языковых моделей (LLM)?",
+  opts:["Визуальные артефакты при генерации изображений","Уверенное генерирование фактически неверной информации","Ошибка в коде программы","Слишком медленный ответ модели"],
+  ans:1 },
+
+{ q:"LLM (большая языковая модель) генерирует текст, основываясь на:",
+  opts:["Точном поиске в базе данных фактов","Статистическом предсказании наиболее вероятного следующего токена","Правилах грамматики, заложенных вручную","Случайном выборе слов из словаря"],
+  ans:1 },
+
+{ q:"Что такое машинное обучение?",
+  opts:["Программирование компьютера с помощью чётких правил","Алгоритмы, которые автоматически улучшаются на основе данных без явного программирования","Обучение программистов работе с ИИ","Ручная разметка данных для нейронных сетей"],
+  ans:1 },
+
+{ q:"Термин 'промпт' в работе с ИИ означает:",
+  opts:["Скорость обработки запроса","Текстовый запрос или инструкция, которую пользователь отправляет ИИ-модели","Обновление модели ИИ","Программный интерфейс доступа к ИИ"],
+  ans:1 },
+
+{ q:"EU AI Act (Закон ЕС об ИИ, 2024) относит ИИ в судопроизводстве к категории:",
+  opts:["Минимального риска","Ограниченного риска","Высокого риска","Запрещённого риска"],
+  ans:2 },
+
+{ q:"Что такое 'обучение с учителем' (supervised learning)?",
+  opts:["Обучение, при котором преподаватель объясняет алгоритму правила","Алгоритм учится на размеченных данных (пара вход → правильный ответ)","Алгоритм самостоятельно находит закономерности без меток","Обучение модели в режиме реального времени"],
+  ans:1 },
+
+{ q:"Первым в мире ввёл термин 'Artificial Intelligence' на конференции в Дартмуте в 1956 году:",
+  opts:["Алан Тьюринг","Джон Маккарти","Норберт Винер","Клод Шеннон"],
+  ans:1 },
+
+{ q:"Тест Тьюринга проверяет:",
+  opts:["Скорость вычислений компьютера","Может ли машина демонстрировать интеллектуальное поведение, неотличимое от человеческого","Правильность алгоритма сортировки","Надёжность аппаратного обеспечения"],
+  ans:1 },
+
+{ q:"Что такое токен в контексте LLM?",
+  opts:["Пароль доступа к ИИ-сервису","Минимальная единица текста (часть слова или символ), которую обрабатывает языковая модель","Одна нейронная связь в сети","Слой нейронной сети"],
+  ans:1 },
+
+// ── ИИ: Инструменты ─────────────────────────
+{ q:"Какой ИИ-сервис специализируется на поиске с обязательными ссылками на источники?",
+  opts:["ChatGPT","Midjourney","Perplexity AI","DALL·E"],
+  ans:2 },
+
+{ q:"Whisper от OpenAI — это инструмент для:",
+  opts:["Генерации изображений","Распознавания и транскрипции речи","Создания презентаций","Написания кода"],
+  ans:1 },
+
+{ q:"GigaChat — это:",
+  opts:["Американский аналог ChatGPT","Российский ИИ-ассистент от Сбербанка","Японская система распознавания голоса","Европейский ИИ-поисковик"],
+  ans:1 },
+
+{ q:"Чем Claude (Anthropic) особенно отличается от других LLM?",
+  opts:["Генерирует только изображения","Поддерживает очень длинный контекст (до 200 000 токенов) и отличается аналитичностью","Работает только в командной строке","Не требует интернета"],
+  ans:1 },
+
+{ q:"Gamma.app — это инструмент для:",
+  opts:["Распознавания лиц","Автоматического создания презентаций по текстовому описанию","Анализа PDF-документов","Транскрипции аудио"],
+  ans:1 },
+
+{ q:"Какие персональные данные НЕЛЬЗЯ вводить в публичные ИИ-сервисы (ChatGPT, Gemini)?",
+  opts:["Общедоступную информацию о законах","Паспортные данные клиентов, коммерческую тайну, пароли","Учебные примеры из учебника","Тексты официальных законов"],
+  ans:1 },
+
+{ q:"Что означает аббревиатура AGI?",
+  opts:["Автоматический генератор изображений","Artificial General Intelligence — общий ИИ, способный выполнять любую интеллектуальную задачу","Advanced Graphics Interface","Automated Government Interface"],
+  ans:1 },
+
+{ q:"Формула RTCFE для составления промптов расшифровывается как:",
+  opts:["Read, Think, Confirm, Format, Execute","Role (Роль), Task (Задача), Context (Контекст), Format (Формат), Example (Пример)","Request, Test, Check, Fix, Evaluate","Research, Type, Create, Finalize, Export"],
+  ans:1 },
+];
+
+// ═══════════════════════════════════════════
+//  CORRECT ANSWERS ARRAY (0-indexed option)
+// ═══════════════════════════════════════════
+const CORRECT = QUESTIONS.map(q => q.ans);
+const LABELS = ['а', 'б', 'в', 'г'];
+const TOTAL_SECONDS = 45 * 60; // 45 minutes
+
+// ═══════════════════════════════════════════
+//  STATE
+// ═══════════════════════════════════════════
+let timerInterval = null;
+let secondsLeft = TOTAL_SECONDS;
+let testStartTime = null;
+let userAnswers = new Array(QUESTIONS.length).fill(null);
+let currentStudent = {};
+let submitConfirmed = false;
+
+// ═══════════════════════════════════════════
+//  ATTEMPT COUNTER (localStorage)
+// ═══════════════════════════════════════════
+const ATTEMPT_KEY = 'inf_test_attempts_v1';
+const MAX_ATTEMPTS = 20;
+
+function getAttempts() {
+  return parseInt(localStorage.getItem(ATTEMPT_KEY) || '0');
+}
+function incAttempts() {
+  const n = getAttempts() + 1;
+  localStorage.setItem(ATTEMPT_KEY, n);
+  return n;
+}
+
+// ═══════════════════════════════════════════
+//  RESULTS STORAGE
+// ═══════════════════════════════════════════
+const RESULTS_KEY = 'inf_test_results_v1';
+
+function getResults() {
+  try { return JSON.parse(localStorage.getItem(RESULTS_KEY) || '[]'); }
+  catch(e) { return []; }
+}
+function saveResult(r) {
+  const arr = getResults();
+  arr.push(r);
+  localStorage.setItem(RESULTS_KEY, JSON.stringify(arr));
+}
+
+// ═══════════════════════════════════════════
+//  SCREEN CONTROL
+// ═══════════════════════════════════════════
+function showScreen(id) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+}
+
+// ═══════════════════════════════════════════
+//  INIT
+// ═══════════════════════════════════════════
+window.addEventListener('load', () => {
+  const attempts = incAttempts();
+
+  if (attempts > MAX_ATTEMPTS) {
+    showScreen('blockedScreen');
+    return;
+  }
+
+  // Date/time
+  const now = new Date();
+  document.getElementById('startDT').value = formatDT(now);
+
+  // Attempt display
+  const remaining = MAX_ATTEMPTS - attempts;
+  document.getElementById('attemptDisplay').textContent =
+    `Попыток использовано: ${attempts} из ${MAX_ATTEMPTS}`;
+
+  if (attempts > 15) {
+    const w = document.getElementById('attemptWarn');
+    w.style.display = 'block';
+    w.innerHTML = `⚠️ Внимание: использовано <strong>${attempts}</strong> из ${MAX_ATTEMPTS} допустимых загрузок страницы. Осталось: <strong>${remaining}</strong>.`;
+  }
+});
+
+function formatDT(d) {
+  return d.toLocaleDateString('ru-RU') + ' ' + d.toLocaleTimeString('ru-RU');
+}
+function formatTime(s) {
+  const m = Math.floor(s / 60);
+  const sec = s % 60;
+  return String(m).padStart(2,'0') + ':' + String(sec).padStart(2,'0');
+}
+
+// ═══════════════════════════════════════════
+//  START TEST
+// ═══════════════════════════════════════════
+function startTest() {
+  const lastName  = document.getElementById('lastName').value.trim();
+  const firstName = document.getElementById('firstName').value.trim();
+  const group     = document.getElementById('groupName').value.trim();
+
+  if (!lastName || !firstName || !group) {
+    showToast('Заполните все поля: Фамилия, Имя, Группа');
+    return;
+  }
+
+  currentStudent = {
+    lastName, firstName, group,
+    startDT: document.getElementById('startDT').value,
+    startTimestamp: Date.now()
+  };
+
+  buildQuestions();
+  document.getElementById('studentNameDisplay').textContent =
+    `${lastName} ${firstName} · ${group}`;
+
+  showScreen('testScreen');
+  startTimer();
+}
+
+// ═══════════════════════════════════════════
+//  BUILD QUESTIONS HTML
+// ═══════════════════════════════════════════
+function buildQuestions() {
+  const container = document.getElementById('questionsContainer');
+  container.innerHTML = '';
+
+  QUESTIONS.forEach((q, qi) => {
+    const block = document.createElement('div');
+    block.className = 'q-block';
+    block.id = `qblock-${qi}`;
+
+    const head = document.createElement('div');
+    head.className = 'q-head';
+    head.innerHTML = `<div class="q-num">${qi+1}</div><div class="q-text">${q.q}</div>`;
+    block.appendChild(head);
+
+    const opts = document.createElement('div');
+    opts.className = 'q-options';
+
+    q.opts.forEach((opt, oi) => {
+      const label = document.createElement('label');
+      label.className = 'opt-label';
+      label.setAttribute('for', `q${qi}_o${oi}`);
+      label.innerHTML = `
+        <input type="radio" id="q${qi}_o${oi}" name="q${qi}" value="${oi}"
+               onchange="selectAnswer(${qi}, ${oi}, this)">
+        <div class="opt-key">${LABELS[oi]}</div>
+        <div class="opt-text">${opt}</div>`;
+      opts.appendChild(label);
+    });
+
+    block.appendChild(opts);
+    container.appendChild(block);
+  });
+}
+
+// ═══════════════════════════════════════════
+//  SELECT ANSWER
+// ═══════════════════════════════════════════
+function selectAnswer(qi, oi, radio) {
+  userAnswers[qi] = oi;
+
+  // visual update
+  const block = document.getElementById(`qblock-${qi}`);
+  block.classList.add('answered');
+  block.querySelectorAll('.opt-label').forEach((l,i) => {
+    l.classList.toggle('selected', i === oi);
+  });
+
+  updateProgress();
+}
+
+function updateProgress() {
+  const answered = userAnswers.filter(a => a !== null).length;
+  const pct = Math.round(answered / QUESTIONS.length * 100);
+  document.getElementById('answeredCount').textContent = `${answered} / ${QUESTIONS.length}`;
+  document.getElementById('progressPct').textContent = pct + '%';
+  document.getElementById('progressFill').style.width = pct + '%';
+}
+
+// ═══════════════════════════════════════════
+//  TIMER
+// ═══════════════════════════════════════════
+function startTimer() {
+  testStartTime = Date.now();
+  secondsLeft = TOTAL_SECONDS;
+  timerInterval = setInterval(() => {
+    secondsLeft--;
+    const el = document.getElementById('timerDisplay');
+    el.textContent = formatTime(secondsLeft);
+    el.className = 'timer-clock' +
+      (secondsLeft <= 60 ? ' danger' : secondsLeft <= 300 ? ' warn' : '');
+
+    if (secondsLeft <= 0) {
+      clearInterval(timerInterval);
+      showToast('Время вышло! Тест завершается автоматически.');
+      setTimeout(() => finalizeTest(), 1000);
+    }
+  }, 1000);
+}
+
+// ═══════════════════════════════════════════
+//  SUBMIT
+// ═══════════════════════════════════════════
+function submitTest() {
+  const unanswered = userAnswers.filter(a => a === null).length;
+  if (unanswered > 0 && !submitConfirmed) {
+    const w = document.getElementById('unansweredWarn');
+    w.style.display = 'block';
+    w.textContent = `Не отвечено на ${unanswered} вопрос(а). Нажмите ещё раз для подтверждения.`;
+    submitConfirmed = true;
+    return;
+  }
+  clearInterval(timerInterval);
+  finalizeTest();
+}
+
+function finalizeTest() {
+  const elapsed = Math.round((Date.now() - testStartTime) / 1000);
+  let correct = 0;
+  userAnswers.forEach((a, i) => { if (a === CORRECT[i]) correct++; });
+
+  const result = {
+    lastName:  currentStudent.lastName,
+    firstName: currentStudent.firstName,
+    group:     currentStudent.group,
+    startDT:   currentStudent.startDT,
+    finishDT:  formatDT(new Date()),
+    elapsed,
+    score: correct,
+    answers: [...userAnswers]
+  };
+
+  saveResult(result);
+  showResult(result);
+}
+
+// ═══════════════════════════════════════════
+//  SHOW RESULT
+// ═══════════════════════════════════════════
+function showResult(r) {
+  const pct = r.score / QUESTIONS.length;
+  let grade, gradeClass, medal;
+  if (pct >= 0.9)      { grade='Отлично (5)'; gradeClass='grade-5'; medal='🏆'; }
+  else if (pct >= 0.75){ grade='Хорошо (4)';  gradeClass='grade-4'; medal='🎓'; }
+  else if (pct >= 0.6) { grade='Удовлетворительно (3)'; gradeClass='grade-3'; medal='📋'; }
+  else                 { grade='Не зачтено (2)'; gradeClass='grade-2'; medal='📌'; }
+
+  document.getElementById('resultMedal').textContent = medal;
+  document.getElementById('resultHeadline').textContent =
+    pct >= 0.6 ? `Поздравляем! Вы набрали ${r.score} из 50!` : `Тест завершён. Результат: ${r.score} из 50`;
+  document.getElementById('resultSubline').textContent =
+    pct >= 0.6 ? 'Результат сохранён. Хорошая работа!' : 'Результат сохранён. Рекомендуется повторная подготовка.';
+
+  document.getElementById('scoreNum').textContent = r.score;
+  const scoreRing = document.getElementById('scoreRing');
+  scoreRing.style.setProperty('--pct', (pct * 100).toFixed(1) + '%');
+
+  const badge = document.getElementById('gradeBadge');
+  badge.textContent = grade;
+  badge.className = 'grade-badge ' + gradeClass;
+
+  document.getElementById('rStudentName').textContent = `${r.lastName} ${r.firstName}`;
+  document.getElementById('rGroup').textContent = r.group;
+  document.getElementById('rDateTime').textContent = r.finishDT;
+  const mm = Math.floor(r.elapsed/60), ss = r.elapsed%60;
+  document.getElementById('rElapsed').textContent = `${mm} мин ${ss} сек`;
+  document.getElementById('rCorrect').textContent = r.score;
+  document.getElementById('rWrong').textContent = QUESTIONS.length - r.score;
+
+  showScreen('resultScreen');
+}
+
+// ═══════════════════════════════════════════
+//  ADMIN
+// ═══════════════════════════════════════════
+function openAdminModal() {
+  document.getElementById('pwInput').value = '';
+  document.getElementById('pwError').style.display = 'none';
+  document.getElementById('pwModal').classList.add('open');
+  setTimeout(() => document.getElementById('pwInput').focus(), 100);
+}
+function closePwModal() {
+  document.getElementById('pwModal').classList.remove('open');
+}
+function checkPw() {
+  const pw = document.getElementById('pwInput').value;
+  if (pw === 'Misha') {
+    closePwModal();
+    showAdminPanel();
+  } else {
+    document.getElementById('pwError').style.display = 'block';
+    document.getElementById('pwInput').value = '';
+    document.getElementById('pwInput').focus();
+  }
+}
+
+function showAdminPanel() {
+  const results = getResults();
+  const attempts = getAttempts();
+
+  // Stats
+  const statsEl = document.getElementById('adminStats');
+  const avg = results.length ? (results.reduce((s,r)=>s+r.score,0)/results.length).toFixed(1) : '—';
+  const pass = results.filter(r=>r.score/QUESTIONS.length>=0.6).length;
+  statsEl.innerHTML = `
+    <div class="stat-card"><div class="label">Всего попыток</div><div class="value">${attempts}</div></div>
+    <div class="stat-card"><div class="label">Сдали тест</div><div class="value">${results.length}</div></div>
+    <div class="stat-card"><div class="label">Зачтено</div><div class="value">${pass}</div></div>
+    <div class="stat-card"><div class="label">Среднее баллов</div><div class="value">${avg}</div></div>
+  `;
+
+  // Table
+  const tbl = document.getElementById('resultsTable');
+  const qNums = QUESTIONS.map((_,i)=>`Q${i+1}`);
+
+  // Header
+  const fixedCols = ['Фамилия', 'Имя', 'Группа', 'Начало', 'Финиш', 'Время', 'Баллы'];
+  let thead = '<thead><tr>';
+  fixedCols.forEach(c => { thead += `<th class="left">${c}</th>`; });
+  qNums.forEach(q => { thead += `<th>${q}</th>`; });
+  thead += '</tr></thead>';
+
+  // Answer key row
+  let answerRow = '<tr class="answer-row">';
+  answerRow += `<td class="left" colspan="${fixedCols.length}">✅ ПРАВИЛЬНЫЕ ОТВЕТЫ</td>`;
+  CORRECT.forEach(c => { answerRow += `<td>${LABELS[c]}</td>`; });
+  answerRow += '</tr>';
+
+  // Data rows
+  let tbody = '<tbody>' + answerRow;
+  if (results.length === 0) {
+    tbody += `<tr><td colspan="${fixedCols.length + QUESTIONS.length}" style="text-align:center;color:#94a3b8;padding:24px;">Ещё нет результатов</td></tr>`;
+  } else {
+    // Sort by score desc
+    [...results].sort((a,b)=>b.score-a.score).forEach((r, ri) => {
+      const mm = Math.floor(r.elapsed/60), ss = r.elapsed%60;
+      const gradeColor = r.score/QUESTIONS.length >= 0.6 ? '#16a34a' : '#dc2626';
+      tbody += `<tr>
+        <td class="left">${r.lastName}</td>
+        <td class="left">${r.firstName}</td>
+        <td class="left">${r.group}</td>
+        <td>${r.startDT || '—'}</td>
+        <td>${r.finishDT}</td>
+        <td>${mm}м ${ss}с</td>
+        <td style="color:${gradeColor};font-weight:700;">${r.score}</td>`;
+      r.answers.forEach((a, qi) => {
+        const isCorr = a === CORRECT[qi];
+        const label = a !== null ? LABELS[a] : '—';
+        tbody += `<td class="${isCorr?'correct':'wrong'}">${label}</td>`;
+      });
+      tbody += '</tr>';
+    });
+  }
+  tbody += '</tbody>';
+
+  tbl.innerHTML = thead + tbody;
+  showScreen('adminScreen');
+}
+
+// ═══════════════════════════════════════════
+//  EXPORT CSV
+// ═══════════════════════════════════════════
+function exportCSV() {
+  const results = getResults();
+  if (!results.length) { showToast('Нет данных для экспорта'); return; }
+
+  const fixedH = ['Фамилия','Имя','Группа','Начало','Финиш','Сек.всего','Баллы'];
+  const qH = QUESTIONS.map((_,i)=>`Q${i+1}`);
+  const header = [...fixedH, ...qH].join(';');
+
+  const answerKeyRow = ['ПРАВИЛЬНЫЕ ОТВЕТЫ','','','','','','',
+    ...CORRECT.map(c=>LABELS[c])].join(';');
+
+  const rows = results.map(r => [
+    r.lastName, r.firstName, r.group,
+    r.startDT||'', r.finishDT, r.elapsed, r.score,
+    ...r.answers.map((a,qi) => a !== null ? LABELS[a] : '-')
+  ].join(';'));
+
+  const csv = '\uFEFF' + [header, answerKeyRow, ...rows].join('\n');
+  const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url; a.download = 'Informatika_Test_Rezultaty.csv';
+  a.click(); URL.revokeObjectURL(url);
+}
+
+// ═══════════════════════════════════════════
+//  TOAST
+// ═══════════════════════════════════════════
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 3000);
+}
+</script>
+</body>
+</html>
